@@ -3,7 +3,7 @@ node{
  stage('Clone repository'){
   checkout scm
 }
- if(env.BRANCH_NAME=='deev'){
+ if ( ENV.BRANCH_NAME=='deev'){
  stage('Build image'){
   app=docker.build("marijajoo/kiii_folder")
 }
