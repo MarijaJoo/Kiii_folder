@@ -3,6 +3,7 @@ node{
  stage('Clone repository'){
   checkout scm
 }
+ if(env.BRANCH_NAME=='deev'){
  stage('Build image'){
   app=docker.build("marijajoo/kiii_folder")
 }
@@ -12,4 +13,8 @@ node{
    app.push("${env.BRANCH_NAME}-latest")
 }
 }
+ }
+ else {
+  echo "The Docker Image build and push to Docker Hub will only happen if the changes are on the ‘deev’ branch."
+ }
 }
